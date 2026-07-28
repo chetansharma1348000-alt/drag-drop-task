@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { GripVertical } from "lucide-react";
-import { COLUMNS, INITIAL_TASKS } from "./taskData.js";
+import { COLUMNS, INITIAL_TASKS } from "./taskData.jsx";
 import "./DragDropTaskList.css";
 
 function makeId() {
