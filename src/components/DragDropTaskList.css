@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap");
+
+.dnd-root {
+  --ink: #232a2e;
+  --paper: #edeff1;
+  --card: #ffffff;
+  font-family: "Inter", sans-serif;
+  background: var(--paper);
+  background-image: radial-gradient(circle at 1px 1px, rgba(35, 42, 46, 0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: var(--ink);
+  padding: 40px 28px 56px;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.dnd-header {
+  max-width: 900px;
+  margin: 0 auto 28px;
+}
+
+.dnd-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a8f98;
+  margin: 0 0 6px;
+}
+
+.dnd-title {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 30px;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.dnd-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.dnd-col-full {
+  grid-column: 1 / -1;
+}
+
+.dnd-column {
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(35, 42, 46, 0.06), 0 8px 20px -14px rgba(35, 42, 46, 0.25);
+  overflow: hidden;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dnd-column.is-over {
+  box-shadow: 0 0 0 2px var(--col-accent), 0 8px 20px -14px rgba(35, 42, 46, 0.25);
+}
+
+.dnd-col-tape {
+  height: 5px;
+  background: var(--col-accent);
+}
+
+.dnd-col-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+}
+
+.dnd-col-label {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--col-accent);
+}
+
+.dnd-col-count {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: #9aa0a6;
+  background: var(--col-tint);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.dnd-col-body {
+  flex: 1;
+  padding: 4px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dnd-col-body.empty::after {
+  content: "Drop a task here";
+  font-family: "Inter", sans-serif;
+  font-size: 12.5px;
+  color: #b4b8bd;
+  text-align: center;
+  padding: 22px 8px;
+  border: 1.5px dashed #dadde1;
+  border-radius: 8px;
+  margin: 2px 6px;
+}
+
+.dnd-task {
+  background: var(--col-tint);
+  border: 1px solid rgba(35, 42, 46, 0.06);
+  border-radius: 7px;
+  padding: 9px 10px;
+  font-size: 13.5px;
+  line-height: 1.35;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  cursor: grab;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.dnd-task:active {
+  cursor: grabbing;
+}
+
+.dnd-task.dragging {
+  opacity: 0.35;
+}
+
+.dnd-task .grip {
+  color: #b4b8bd;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.dnd-task-text {
+  flex: 1;
+}
+
+.dnd-drop-line {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--col-accent);
+  margin: -3px 2px;
+}
+
+@media (max-width: 620px) {
+  .dnd-grid {
+    grid-template-columns: 1fr;
+  }
+}
