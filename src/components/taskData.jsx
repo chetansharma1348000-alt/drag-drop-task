@@ -5,7 +5,6 @@ function Task({ task, columnKey }) {
 
     const y = e.clientY;
 
-    // Scroll up
     if (y < threshold) {
       window.scrollBy({
         top: -speed,
@@ -13,7 +12,6 @@ function Task({ task, columnKey }) {
       });
     }
 
-    // Scroll down
     if (y > window.innerHeight - threshold) {
       window.scrollBy({
         top: speed,
