@@ -1,56 +1,43 @@
-function Task({ task, columnKey }) {
-  const autoScroll = (e) => {
-    const threshold = 120;
-    const speed = 15;
+export const COLUMNS = [
+  {
+    id: "today",
+    label: "Today",
+    accent: "#ef4444",
+    tint: "#fef2f2",
+  },
+  {
+    id: "tomorrow",
+    label: "Tomorrow",
+    accent: "#3b82f6",
+    tint: "#eff6ff",
+  },
+  {
+    id: "thisWeek",
+    label: "This Week",
+    accent: "#10b981",
+    tint: "#ecfdf5",
+  },
+  {
+    id: "nextWeek",
+    label: "Next Week",
+    accent: "#8b5cf6",
+    tint: "#f5f3ff",
+  },
+  {
+    id: "unplanned",
+    label: "Unplanned",
+    accent: "#f59e0b",
+    tint: "#fffbeb",
+  },
+];
 
-    const y = e.clientY;
-
-    if (y < threshold) {
-      window.scrollBy({
-        top: -speed,
-        behavior: "auto",
-      });
-    }
-
-    if (y > window.innerHeight - threshold) {
-      window.scrollBy({
-        top: speed,
-        behavior: "auto",
-      });
-    }
-  };
-
-  const handleDragStart = (e) => {
-    e.dataTransfer.setData("task", task);
-    e.dataTransfer.setData("source", columnKey);
-
-    document.addEventListener("dragover", autoScroll);
-
-    setTimeout(() => {
-      e.target.classList.add("dragging");
-    }, 0);
-  };
-
-  const handleDragEnd = (e) => {
-    e.target.classList.remove("dragging");
-    document.removeEventListener("dragover", autoScroll);
-  };
-
-  return (
-    <div
-      className="task"
-      draggable
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-    >
-      <div className="task-left">
-        <span className="drag-icon">☰</span>
-        <span className="task-title">{task}</span>
-      </div>
-
-      <span className="task-arrow">→</span>
-    </div>
-  );
-}
-
-export default Task;
+export const INITIAL_TASKS = [
+  "Design Homepage",
+  "Fix Login Bug",
+  "Write Documentation",
+  "Update Dashboard",
+  "Create API",
+  "Review Pull Request",
+  "Team Meeting",
+  "Deploy Project",
+];
